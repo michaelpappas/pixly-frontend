@@ -4,6 +4,8 @@ import './App.css';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+const BASE_URL = "http://localhost:5002/api/images";
 
 function App() {
   const [file, setFile] = useState();
@@ -20,7 +22,12 @@ function App() {
 
     const formData = new FormData();
     formData.append('File', file);
+    uploadFile(formData);
 
+  }
+
+  async function uploadFile(formData) {
+    const response = await axios.post(BASE_URL, formData);
   }
 
   return (
