@@ -12,19 +12,19 @@ class PixlyApi {
   /** Makes a GET request to server to get all images */
   static async getImages() {
     const response = await axios.get(`${BASE_URL}/api/images`);
-    return response.data;
+    return response.data.images;
   }
 
   /** Makes a GET request to server to get an image */
   static async getImage(id) {
     const response = await axios.post(`${BASE_URL}/api/images/${id}`);
-    return response.data;
+    return response.data.image;
   }
 
   /** Makes a POST request to server to upload an image */
   static async uploadImage(formData) {
     const response = await axios.post(`${BASE_URL}/api/images`, formData);
-    return response.data;
+    return response.data.image;
   }
 
   // TODO:

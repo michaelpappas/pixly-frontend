@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import ImageContainer from "./ImageContainer";
 
-function Home() {
+/**Home
+ * state: none
+ * props: images - array of image objects
+ */
+function Home({ images }) {
   return (
-    <div>Home</div>
-  )
+    <ImageContainer images={images} />
+  );
 }
 
-export default Home
+export default Home;
