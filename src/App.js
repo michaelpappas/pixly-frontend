@@ -38,6 +38,7 @@ function App() {
           <Form.Control
             name='imgFile'
             type='file'
+            accept='.gif,.jpg,.jpeg,.png,.heic,.svg'
             onChange={handleChange}
           />
         </Form.Group>
