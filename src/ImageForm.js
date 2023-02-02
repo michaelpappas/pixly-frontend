@@ -6,7 +6,9 @@ const INITIAL_FORM_DATA = {
   imgFile: null,
   title: "",
   caption: "",
-  photographer: ""
+  photographer: "",
+  filter: '',
+  resize: 100
 };
 
 /** Form for uploading a new image
@@ -23,15 +25,12 @@ const INITIAL_FORM_DATA = {
 
 function ImageForm({ upload }) {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
-  const [isFileChosen, setIsFileChosen] = useState(false);
 
   /** Update formData state with selected file */
   function handleFileChange(evt) {
     setFormData(prevFormData => ({
       ...formData, imgFile: evt.target.files[0]
     }));
-    setIsFileChosen(true);
-    console.log('File chosen');
   }
 
   /** Update formData state with input text fields */
@@ -46,8 +45,6 @@ function ImageForm({ upload }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
 
-    // TODO: If file isn't chosen or title is '' don't proceed
-
     const imageFormData = new FormData();
     for (let key in formData) {
       imageFormData.append(key, formData[key]);
@@ -56,7 +53,8 @@ function ImageForm({ upload }) {
     upload(imageFormData);
 
     setFormData(INITIAL_FORM_DATA);
-    // Reset the file selector and set isFileChosen to false
+    const fileInput = document.getElementById('fileInput');
+    fileInput.value = '';
   }
 
   return (
@@ -68,7 +66,34 @@ function ImageForm({ upload }) {
           type='file'
           accept='.gif,.jpg,.jpeg,.png,.heic,.svg'
           onChange={handleFileChange}
+          required
         />
+      </Form.Group>
+
+      <Form.Group controlId='filterInput'>
+        <Form.Label>Select a Filter</Form.Label>
+        <Form.Select
+          name='filter'
+          value={formData.filter}
+          onChange={handleChange}
+        >
+          <option value=''>None</option>
+          <option value='bw'>Black & White</option>
+        </Form.Select>
+      </Form.Group>
+
+      <Form.Group controlId='resizeInput'>
+        <Form.Label>Resize Image</Form.Label>
+        <Form.Select
+          name='resize'
+          value={formData.resize}
+          onChange={handleChange}
+        >
+          <option value={100}>100%</option>
+          <option value={75}>75%</option>
+          <option value={50}>50%</option>
+          <option value={25}>25%</option>
+        </Form.Select>
       </Form.Group>
 
       <Form.Group controlId='titleInput'>
@@ -79,6 +104,7 @@ function ImageForm({ upload }) {
           maxLength={50}
           value={formData.title}
           onChange={handleChange}
+          required
         />
       </Form.Group>
 

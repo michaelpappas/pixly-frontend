@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-const google_maps_url = "https://www.google.com/maps/@";
+const GOOGLE_MAPS_BASE_URL = "https://www.google.com/maps/@";
 
 function ExifData({ exifData }) {
   return (
@@ -25,7 +25,7 @@ function ExifData({ exifData }) {
         {exifData?.height_px && <Card.Text>
           Size: {exifData.height_px}px x {exifData.width_px}px
         </Card.Text>}
-        {exifData.location && <Card.Link href={`https://www.google.com/maps/@${exifData.location},15z`} target="_blank" rel="noopener noreferrer">Image Location</Card.Link>}
+        {exifData.location && <Card.Link href={`${GOOGLE_MAPS_BASE_URL}${exifData.location},15z`} target="_blank" rel="noopener noreferrer">Image Location</Card.Link>}
       </Card.Body>
     </Card>
   );
