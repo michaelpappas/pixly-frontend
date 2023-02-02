@@ -22,11 +22,6 @@ function ImageDetail() {
     getAndSetImage();
   }, []);
 
-
-
-
-
-
   if (image.isLoading) {
     return <h2>Loading... </h2>;
   }

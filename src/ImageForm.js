@@ -46,12 +46,17 @@ function ImageForm({ upload }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
 
+    // TODO: If file isn't chosen or title is '' don't proceed
+
     const imageFormData = new FormData();
     for (let key in formData) {
       imageFormData.append(key, formData[key]);
     }
 
     upload(imageFormData);
+
+    setFormData(INITIAL_FORM_DATA);
+    // Reset the file selector and set isFileChosen to false
   }
 
   return (
@@ -71,6 +76,7 @@ function ImageForm({ upload }) {
         <Form.Control
           name='title'
           type='text'
+          value={formData.title}
           onChange={handleChange}
         />
       </Form.Group>
@@ -80,6 +86,7 @@ function ImageForm({ upload }) {
         <Form.Control
           name='caption'
           type='text'
+          value={formData.caption}
           onChange={handleChange}
         />
       </Form.Group>
@@ -89,6 +96,7 @@ function ImageForm({ upload }) {
         <Form.Control
           name='photographer'
           type='text'
+          value={formData.photographer}
           onChange={handleChange}
         />
       </Form.Group>
