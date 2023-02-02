@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { useParams } from "react-router-dom";
 import PixlyApi from './helpers/api';
 import { S3_BASE_URL, ORIGINALS_FOLDER_PATH, THUMBNAILS_FOLDER_PATH } from './App';
+import ExifData from './ExifData';
 
 function ImageDetail() {
   const { id } = useParams();
@@ -21,21 +22,24 @@ function ImageDetail() {
     }
     getAndSetImage();
   }, []);
+  console.log(image.data);
 
   if (image.isLoading) {
     return <h2>Loading... </h2>;
   }
-
   return (
-    <Card style={{ width: '50rem' }}>
-      <Card.Img variant="top" src={`${S3_BASE_URL}${ORIGINALS_FOLDER_PATH}${image.data.file_name}`} />
-      <Card.Body>
-        <Card.Title>{image.data.title}</Card.Title>
-        <Card.Text>
-          {image.data.caption}
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <>
+      <Card style={{ width: '50rem' }}>
+        <Card.Img variant="top" src={`${S3_BASE_URL}${ORIGINALS_FOLDER_PATH}${image.data.file_name}`} />
+        <Card.Body>
+          <Card.Title>{image.data.title}</Card.Title>
+          <Card.Text>
+            {image.data.caption}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <ExifData exifData={image.data.exif_data} />
+    </>
   );
 };
 

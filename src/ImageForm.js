@@ -76,6 +76,7 @@ function ImageForm({ upload }) {
         <Form.Control
           name='title'
           type='text'
+          maxLength={50}
           value={formData.title}
           onChange={handleChange}
         />
@@ -86,6 +87,7 @@ function ImageForm({ upload }) {
         <Form.Control
           name='caption'
           type='text'
+          maxLength={100}
           value={formData.caption}
           onChange={handleChange}
         />
@@ -96,6 +98,7 @@ function ImageForm({ upload }) {
         <Form.Control
           name='photographer'
           type='text'
+          maxLength={50}
           value={formData.photographer}
           onChange={handleChange}
         />
