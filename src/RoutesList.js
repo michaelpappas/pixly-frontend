@@ -2,11 +2,11 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import ImageForm from './ImageForm';
 
-function RoutesList({ images }) {
+function RoutesList({ images, upload }) {
   return (
     <Routes>
       <Route path='/' element={<Home images={images} />} />
-      <Route path='/new' element={<ImageForm />} />
+      <Route path='/new' element={<ImageForm upload={upload}/>} />
     </Routes>
   );
 }

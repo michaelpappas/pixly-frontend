@@ -1,11 +1,14 @@
-
-const S3_BASE_URL = "https://michael-pappas.s3.us-west-2.amazonaws.com/pixly/images/originals/";
+import './ImageCard.css';
+import { S3_BASE_URL, ORIGINALS_FOLDER_PATH, THUMBNAILS_FOLDER_PATH } from './App';
 
 function ImageCard({ image }) {
   return (
-    <div>
+    <div className='ImageCard'>
       <h2>{image.title}</h2>
-      <img src={`${S3_BASE_URL}${image.file_name}`} alt={image.title}></img>
+      <img
+        src={`${S3_BASE_URL}${ORIGINALS_FOLDER_PATH}${image.file_name}`}
+        alt={image.title}
+      />
     </div>
   );
 };

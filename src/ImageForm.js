@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import PixlyApi from './helpers/api';
 
 const INITIAL_FORM_DATA = {
   imgFile: null,
@@ -13,7 +12,7 @@ const INITIAL_FORM_DATA = {
 /** Form for uploading a new image
  *
  * Prop:
- * - some kind of function?
+ * - upload: Function to call in App to get most up-to-date images
  *
  * State:
  * - formData: Object corresponding to data in the form
@@ -22,7 +21,7 @@ const INITIAL_FORM_DATA = {
  * RoutesList -> ImageForm
  */
 
-function ImageForm() {
+function ImageForm({ upload }) {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [isFileChosen, setIsFileChosen] = useState(false);
 
@@ -44,14 +43,15 @@ function ImageForm() {
   }
 
   /** Handle submission of form */
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
 
     const imageFormData = new FormData();
     for (let key in formData) {
       imageFormData.append(key, formData[key]);
     }
-    PixlyApi.uploadImage(imageFormData);
+
+    upload(imageFormData);
   }
 
   return (
