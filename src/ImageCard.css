@@ -1,0 +1,26 @@
+.ImageCard {
+    height: 220px;
+    width: 220px;
+    background-color: rgba(208, 217, 225, .75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .75rem;
+    position: relative;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.ImageCard h2 {
+    position: absolute;
+    bottom: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    visibility: hidden;
+    background-color: white;
+    width: 100%;
+}
+
+.ImageCard:hover h2 {
+    visibility: visible;
+}

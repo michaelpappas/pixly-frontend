@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Image } from 'react-bootstrap-icons';
 
 const INITIAL_FORM_DATA = {
   imgFile: null,
@@ -58,80 +62,85 @@ function ImageForm({ upload }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId='fileInput'>
-        <Form.Label>Choose an image</Form.Label>
-        <Form.Control
-          name='imgFile'
-          type='file'
-          accept='.gif,.jpg,.jpeg,.png,.svg'
-          onChange={handleFileChange}
-          required
-        />
-      </Form.Group>
+    <Container className='ImageForm'>
+      <Row className='d-flex justify-content-center mt-4'>
+        <Col xs={8}>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId='fileInput' className='mb-3'>
+              <Form.Label>Choose an image</Form.Label>
+              <Form.Control
+                name='imgFile'
+                type='file'
+                accept='.gif,.jpg,.jpeg,.png,.svg'
+                onChange={handleFileChange}
+                required
+              />
+            </Form.Group>
 
-      <Form.Group controlId='filterInput'>
-        <Form.Label>Select a Filter</Form.Label>
-        <Form.Select
-          name='filter'
-          value={formData.filter}
-          onChange={handleChange}
-        >
-          <option value=''>None</option>
-          <option value='bw'>Black & White</option>
-        </Form.Select>
-      </Form.Group>
+            <Form.Group controlId='filterInput' className='mb-3'>
+              <Form.Label>Select a Filter</Form.Label>
+              <Form.Select
+                name='filter'
+                value={formData.filter}
+                onChange={handleChange}
+              >
+                <option value=''>None</option>
+                <option value='bw'>Black & White</option>
+              </Form.Select>
+            </Form.Group>
 
-      <Form.Group controlId='resizeInput'>
-        <Form.Label>Resize Image</Form.Label>
-        <Form.Select
-          name='resize'
-          value={formData.resize}
-          onChange={handleChange}
-        >
-          <option value={100}>100%</option>
-          <option value={75}>75%</option>
-          <option value={50}>50%</option>
-          <option value={25}>25%</option>
-        </Form.Select>
-      </Form.Group>
+            <Form.Group controlId='resizeInput' className='mb-3'>
+              <Form.Label>Resize Image</Form.Label>
+              <Form.Select
+                name='resize'
+                value={formData.resize}
+                onChange={handleChange}
+              >
+                <option value={100}>100%</option>
+                <option value={75}>75%</option>
+                <option value={50}>50%</option>
+                <option value={25}>25%</option>
+              </Form.Select>
+            </Form.Group>
 
-      <Form.Group controlId='titleInput'>
-        <Form.Label>Image Title</Form.Label>
-        <Form.Control
-          name='title'
-          type='text'
-          maxLength={50}
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+            <Form.Group controlId='titleInput' className='mb-3'>
+              <Form.Label>Image Title</Form.Label>
+              <Form.Control
+                name='title'
+                type='text'
+                maxLength={50}
+                value={formData.title}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
 
-      <Form.Group controlId='captionInput'>
-        <Form.Label>Image Caption</Form.Label>
-        <Form.Control
-          name='caption'
-          type='text'
-          maxLength={100}
-          value={formData.caption}
-          onChange={handleChange}
-        />
-      </Form.Group>
+            <Form.Group controlId='captionInput' className='mb-3'>
+              <Form.Label>Image Caption</Form.Label>
+              <Form.Control
+                name='caption'
+                type='text'
+                maxLength={100}
+                value={formData.caption}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-      <Form.Group controlId='photographerInput'>
-        <Form.Label>Photographer</Form.Label>
-        <Form.Control
-          name='photographer'
-          type='text'
-          maxLength={50}
-          value={formData.photographer}
-          onChange={handleChange}
-        />
-      </Form.Group>
-
-      <Button variant='primary' type='submit'>Submit</Button>
-    </Form>
+            <Form.Group controlId='photographerInput' className='mb-3'>
+              <Form.Label>Photographer</Form.Label>
+              <Form.Control
+                name='photographer'
+                type='text'
+                maxLength={50}
+                value={formData.photographer}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Button variant='dark' type='submit'><Image/></Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

@@ -9,9 +9,13 @@ function ImageContainer({ images }) {
   return (
     <>
       <Container>
-        <Row>{images.map(image => <Col xs={3}>
-          <ImageCard image={image} key={image.file_name} />
-        </Col>)}</Row>
+        <Row>
+          {images.map(image =>
+            <Col xs={6} md={4} lg={3} className='my-3'>
+              <ImageCard image={image} key={image.file_name} />
+            </Col>
+          )}
+        </Row>
       </Container>
     </>
   );

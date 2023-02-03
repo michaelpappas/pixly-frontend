@@ -1,0 +1,16 @@
+.NavBar {
+    font-size: 1.5rem;
+}
+
+.NavBar a {
+    color: black;
+}
+
+.NavBar a:hover,
+.NavBar a:focus {
+    color: #2596BE;
+}
+
+.NavBar a.active {
+    color: #2596BE;
+}

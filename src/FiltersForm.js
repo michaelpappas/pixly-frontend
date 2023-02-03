@@ -61,11 +61,11 @@ function FiltersForm({ handleSearch }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId='searchTerm'>
-        <Form.Label>Search by title:</Form.Label>
+      <Form.Group controlId='searchTerm' className='mb-3'>
         <Form.Control
           name='searchTerm'
           type='text'
+          placeholder='Search by Title'
           maxLength={50}
           value={formData.searchTerm}
           onChange={handleChange}

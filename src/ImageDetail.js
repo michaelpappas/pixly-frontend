@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useParams } from "react-router-dom";
 import PixlyApi from './helpers/api';
-import { S3_BASE_URL, ORIGINALS_FOLDER_PATH, THUMBNAILS_FOLDER_PATH } from './App';
+import { S3_BASE_URL, ORIGINALS_FOLDER_PATH } from './App';
 import ExifData from './ExifData';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function ImageDetail() {
   const { id } = useParams();
@@ -28,18 +30,22 @@ function ImageDetail() {
     return <h2>Loading... </h2>;
   }
   return (
-    <>
-      <Card style={{ width: '50rem' }}>
-        <Card.Img variant="top" src={`${S3_BASE_URL}${ORIGINALS_FOLDER_PATH}${image.data.file_name}`} />
-        <Card.Body>
-          <Card.Title>{image.data.title}</Card.Title>
-          <Card.Text>
-            {image.data.caption}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <ExifData exifData={image.data.exif_data} />
-    </>
+    <Container>
+      <Row className='d-flex justify-content-center mt-4 mb-3'>
+        <Col xs={9} className='d-flex flex-column align-items-center'>
+          <Card className='w-100 mb-2'>
+            <Card.Img variant="top" src={`${S3_BASE_URL}${ORIGINALS_FOLDER_PATH}${image.data.file_name}`} />
+            <Card.Body>
+              <Card.Title>{image.data.title}</Card.Title>
+              <Card.Text>
+                {image.data.caption}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <ExifData exifData={image.data.exif_data} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

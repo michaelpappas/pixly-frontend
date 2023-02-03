@@ -1,6 +1,9 @@
 import React from 'react';
 import ImageContainer from "./ImageContainer";
 import FiltersForm from './FiltersForm';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 /**Home
  * state: none
@@ -11,7 +14,13 @@ import FiltersForm from './FiltersForm';
 function Home({ images, handleSearch }) {
   return (
     <>
-      <FiltersForm handleSearch={handleSearch} />
+      <Container>
+        <Row className='mt-4 mb-3 d-flex justify-content-center'>
+          <Col xs={8}>
+            <FiltersForm handleSearch={handleSearch} />
+          </Col>
+        </Row>
+      </Container>
       <ImageContainer images={images} />
     </>
   );

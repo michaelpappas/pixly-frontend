@@ -3,7 +3,7 @@ const GOOGLE_MAPS_BASE_URL = "https://www.google.com/maps/@";
 
 function ExifData({ exifData }) {
   return (
-    <Card style={{ width: '50rem' }}>
+    <Card className='w-100'>
       <Card.Body>
         {/* <Card.Title>Image Data</Card.Title> */}
         <Card.Subtitle className="mb-2 text-muted">Image Details</Card.Subtitle>
