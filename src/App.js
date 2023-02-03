@@ -7,11 +7,11 @@ import PixlyApi from './helpers/api';
 import NavBar from './NavBar';
 import RoutesList from './RoutesList';
 
-const S3_BASE_URL = process.env.AWS_BUCKET_BASE_URL
-  || 'https://davids-aws-bucket.s3.us-west-1.amazonaws.com/';
-
 // const S3_BASE_URL = process.env.AWS_BUCKET_BASE_URL
-//   || 'https://michael-pappas.s3.us-west-2.amazonaws.com/';
+//   || 'https://davids-aws-bucket.s3.us-west-1.amazonaws.com/';
+
+const S3_BASE_URL = process.env.AWS_BUCKET_BASE_URL
+  || 'https://michael-pappas.s3.us-west-2.amazonaws.com/';
 
 const ORIGINALS_FOLDER_PATH = 'pixly/images/originals/';
 const THUMBNAILS_FOLDER_PATH = 'pixly/images/thumbnails/';
@@ -35,16 +35,8 @@ function App() {
     getAndSetImages();
   }, []);
 
-  async function getAndSetImages() {
-    const images = await PixlyApi.getImages();
-    setImages({
-      data: images,
-      isLoading: false
-    });
-  }
-
-  async function handleSearch(searchData) {
-    const images = await PixlyApi.searchImages(searchData);
+  async function getAndSetImages(searchData) {
+    const images = await PixlyApi.getImages(searchData);
     setImages({
       data: images,
       isLoading: false
@@ -63,7 +55,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        <RoutesList upload={uploadImage} images={images.data} handleSearch={handleSearch} />
+        <RoutesList upload={uploadImage} images={images.data} handleSearch={getAndSetImages} />
       </BrowserRouter>
     </div>
   );

@@ -9,15 +9,8 @@ const BASE_URL = process.env.PIXLY_API_BASE_URL || "http://localhost:5002";
 
 class PixlyApi {
 
-  /** Makes a GET request to server to get all images */
-  static async getImages() {
-    const response = await axios.get(`${BASE_URL}/api/images`);
-    return response.data.images;
-  }
-
-  /** Makes a GET request to server to get images by search term with filters */
-  static async searchImages(searchData) {
-    console.log(searchData);
+  /** Makes a GET request to server to get all images; can take search data*/
+  static async getImages(searchData = {}) {
     const response = await axios.get(`${BASE_URL}/api/images`, { params: searchData });
     return response.data.images;
   }

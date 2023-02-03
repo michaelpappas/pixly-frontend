@@ -6,7 +6,7 @@ function ExifData({ exifData }) {
     <Card style={{ width: '50rem' }}>
       <Card.Body>
         {/* <Card.Title>Image Data</Card.Title> */}
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">Image Details</Card.Subtitle>
         {exifData?.device_manufacturer && <Card.Text>
           Device mfg: {exifData.device_manufacturer}
         </Card.Text>}

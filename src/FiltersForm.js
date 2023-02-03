@@ -2,12 +2,17 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { Search, XCircle } from 'react-bootstrap-icons';
+
 
 const INITIAL_FORM_DATA = {
   searchTerm: "",
   isFilteringWidth: false,
   minWidth: '',
-  maxWidth: ''
+  maxWidth: '',
+  isFilteringHeight: false,
+  minHeight: '',
+  maxHeight: ''
 };
 
 
@@ -45,7 +50,13 @@ function FiltersForm({ handleSearch }) {
     const { name, checked } = evt.target;
     setFormData(prevFormData => ({
       ...prevFormData, [name]: checked
-    }))
+    }));
+  }
+
+  /** sets formData to initialFormData and calls handleSearch with initialFormData */
+  function clearFilters() {
+    setFormData(INITIAL_FORM_DATA);
+    handleSearch(INITIAL_FORM_DATA);
   }
 
   return (
@@ -85,8 +96,33 @@ function FiltersForm({ handleSearch }) {
           onChange={handleChange}
         />
       </InputGroup>
+      <InputGroup className="mb-3">
+        <InputGroup.Checkbox
+          name='isFilteringHeight'
+          checked={formData.isFilteringHeight}
+          onChange={handleCheckboxChange}
+        />
+        <InputGroup.Text>Filter Height</InputGroup.Text>
+        <Form.Control
+          type='number'
+          placeholder='Minimum (px)'
+          name='minHeight'
+          value={formData.minHeight}
+          disabled={!formData.isFilteringHeight}
+          onChange={handleChange}
+        />
+        <Form.Control
+          type='number'
+          placeholder='Maximum (px)'
+          name='maxHeight'
+          value={formData.maxHeight}
+          disabled={!formData.isFilteringHeight}
+          onChange={handleChange}
+        />
+      </InputGroup>
 
-      <Button variant='primary' type='submit'>Submit</Button>
+      <Button variant='secondary' type='submit' className="me-2"><Search /></Button>
+      <Button variant='secondary' onClick={clearFilters}><XCircle /></Button>
     </Form>
   );
 }
