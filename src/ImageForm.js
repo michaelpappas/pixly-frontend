@@ -29,7 +29,7 @@ function ImageForm({ upload }) {
   /** Update formData state with selected file */
   function handleFileChange(evt) {
     setFormData(prevFormData => ({
-      ...formData, imgFile: evt.target.files[0]
+      ...prevFormData, imgFile: evt.target.files[0]
     }));
   }
 
@@ -37,7 +37,7 @@ function ImageForm({ upload }) {
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(prevFormData => ({
-      ...formData, [name]: value
+      ...prevFormData, [name]: value
     }));
   }
 

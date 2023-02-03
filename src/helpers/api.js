@@ -15,9 +15,10 @@ class PixlyApi {
     return response.data.images;
   }
 
-  /** Makes a GET request to server to get images by search term */
-  static async searchImages(query) {
-    const response = await axios.get(`${BASE_URL}/api/images`, { params: { searchTerm: query } });
+  /** Makes a GET request to server to get images by search term with filters */
+  static async searchImages(searchData) {
+    console.log(searchData);
+    const response = await axios.get(`${BASE_URL}/api/images`, { params: searchData });
     return response.data.images;
   }
 
