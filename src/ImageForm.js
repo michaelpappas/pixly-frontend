@@ -64,7 +64,7 @@ function ImageForm({ upload }) {
         <Form.Control
           name='imgFile'
           type='file'
-          accept='.gif,.jpg,.jpeg,.png,.heic,.svg'
+          accept='.gif,.jpg,.jpeg,.png,.svg'
           onChange={handleFileChange}
           required
         />

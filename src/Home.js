@@ -1,13 +1,19 @@
 import React from 'react';
 import ImageContainer from "./ImageContainer";
+import FiltersForm from './FiltersForm';
 
 /**Home
  * state: none
  * props: images - array of image objects
+ *
+ * RoutList -> Home
  */
-function Home({ images }) {
+function Home({ images, handleSearch }) {
   return (
-    <ImageContainer images={images} />
+    <>
+      <FiltersForm handleSearch={handleSearch} />
+      <ImageContainer images={images} />
+    </>
   );
 }
 
