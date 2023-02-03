@@ -7,6 +7,8 @@ import ExifData from './ExifData';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { EyeFill } from 'react-bootstrap-icons';
+
 
 function ImageDetail() {
   const { id } = useParams();
@@ -19,6 +21,8 @@ function ImageDetail() {
 
   useEffect(function fetchImageOnMount() {
     async function getAndSetImage() {
+      await PixlyApi.addView(id);
+
       const image = await PixlyApi.getImage(id);
       setImage({ data: image, isLoading: false });
     }
@@ -39,6 +43,9 @@ function ImageDetail() {
               <Card.Title>{image.data.title}</Card.Title>
               <Card.Text>
                 {image.data.caption}
+              </Card.Text>
+              <Card.Text>
+                <EyeFill />  {image.data.views}
               </Card.Text>
             </Card.Body>
           </Card>

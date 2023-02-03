@@ -11,8 +11,8 @@ function ImageContainer({ images }) {
       <Container>
         <Row>
           {images.map(image =>
-            <Col xs={6} md={4} lg={3} className='my-3'>
-              <ImageCard image={image} key={image.file_name} />
+            <Col xs={6} md={4} lg={3} className='my-3' key={image.file_name}>
+              <ImageCard image={image} />
             </Col>
           )}
         </Row>

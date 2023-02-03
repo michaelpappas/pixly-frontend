@@ -28,6 +28,11 @@ class PixlyApi {
     return response.data.image;
   }
 
+  static async addView(id) {
+    const response = await axios.patch(`${BASE_URL}/api/images/${id}`);
+    return response.data.views;
+  }
+
   // TODO:
   /** Makes a GET request to server to get all tags */
   /** Makes a GET request to server to get a tag and its images */
