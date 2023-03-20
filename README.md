@@ -1,6 +1,6 @@
-## Jobly
+## Pixly
 
-A image uploading React app that communicates to the Flask backend. Users can upload images, resize, convert to black and white, extract exif data, and filter by image name and size
+A image uploading React app that communicates to the Flask backend. Users can upload images, resize, convert to black and white, extract EXIF data, and filter by image name and size.
 
 ## Project Status
 In progress:
