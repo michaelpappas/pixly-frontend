@@ -2,6 +2,8 @@
 
 A image uploading React app that communicates to the Flask backend. Users can upload images, resize, convert to black and white, extract EXIF data, and filter by image name and size.
 
+The backend rep can be seen [here]([https://github.com/michaelpappas/pixly-backend])
+
 ## Project Status
 In progress:
 - Build out image tagging functionality
